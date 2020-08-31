@@ -1,0 +1,21 @@
+{% extends '/App/templates/main.html' %}
+
+{% block content %}
+    <h1 style="text-align: center"> Цитаты </h1>
+    <div class="row" style="padding-top: 10px; text-align: center">
+        {% for quote in quotes %}
+            <div class="col-sm-12 col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <a href="/quote/one/?id={{ quote.id }}">
+                            <h2>{{ quote.quote }}</h2>
+                        </a>
+                    </div>
+                    <div>
+                        {{ quote.content }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{%  endblock %}

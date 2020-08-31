@@ -1,0 +1,57 @@
+{% extends '/App/templates/main.html' %}
+
+{% block content %}
+    <div class="row" style="padding-top: 10px; text-align: center">
+        <div class="thumbnail">
+            <div class="caption">
+                <h2>{{ image.title }}</h2>
+            </div>
+            <div>
+                <img src="/src/images/{{ image.path }}" style = "width: 100%">
+            </div>
+            <div>
+                {{ image.content }}
+            </div>
+            <div style="font-size: 15px">
+                {% if image.author %}
+                Автор статьи: {{ image.author.login }}
+                {% endif %}
+            </div>
+            <div style="font-size: 15px">
+                Дата публикации: {{ image.created_at|date(fromat, timezon) }}
+            </div>
+        </div>
+    </div>
+
+    <!-- AllOfRecord -->
+    Комментарии: <br>
+    {% for comment in comments %}
+        <div style="border: 1px; color: black">
+            <div>
+                {{ comment.comment }}
+            </div>
+            <div style="font-size: 15px">
+                Автор: {{ comment.author.login }}
+            </div>
+            <h12 style="font-size: 15px">
+                Дата публикации: {{ comment.creates_at | date('Y-m-d H:i:s') }}
+            </h12>
+        </div>
+        <hr>
+    {% endfor %}
+
+    {% if user %}
+        <form action="/comment/add" method="post"> <!-- /?controller=article&moduleName=articles -->
+            <input type="hidden" name="moduleName" value="images">
+            <input type="hidden" name="controller" value="image">
+            Добавить комментарий <br>
+            <textarea name="comment" cols="20" rows="1"></textarea>
+            <br>
+            <button type="submit" name="recordId" value="{{ image.id }}">
+                отправить
+            </button>
+        </form>
+    {% else %}
+        Комментарии могут оставлять только авторизованные пользователи.
+    {% endif %}
+{%  endblock %}

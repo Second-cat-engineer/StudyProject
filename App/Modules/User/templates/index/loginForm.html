@@ -1,0 +1,25 @@
+{% extends '/App/templates/main.html' %}
+
+{% block content %}
+    {% if errors %}
+        {% for error in errors %}
+    {{ error.getMessage }} <br>
+        {% endfor %}
+    {% endif %}
+
+    <h1> Страница авторизации</h1>
+    <form action="/user/login" method="post">
+        <p> введите Логин:
+            <input type="text" name="login" value="{{ login }}">
+        </p>
+        <p> введите Пароль:
+            <input type="text" name="password" value="{{ password }}">
+        </p>
+        <p>
+            <button type="submit"> войти</button>
+        </p>
+    </form>
+    <p>
+        <a href="/user/registrationForm"> Регистрация </a>
+    </p>
+{% endblock %}

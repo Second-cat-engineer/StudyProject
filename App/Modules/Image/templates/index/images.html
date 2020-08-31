@@ -1,0 +1,24 @@
+{% extends '/App/templates/main.html' %}
+
+{% block content %}
+    <!-- Галлерея изображений -->
+    <h1 style="text-align: center"> Галлерея изображений </h1>
+    <div class="row" style="padding-top: 10px">
+        {% for image in images %}
+        <div class="col-xs-6 col-md-4">
+            <a href = "/image/one/?id={{ image.id }}">
+                <img src="/src/images/{{ image.path }}" style = "width: 300px">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    {% if user %}
+    <hr>
+    <form action="/admin/image/add" method="post" enctype="multipart/form-data">
+        <input type = "file" name = "img">
+        <button type="submit">Загрузить</button>
+    </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends '/App/templates/main.html' %}
+
+{% block content %}
+    <div class="row" style="padding-top: 10px; text-align: center">
+        <div class="thumbnail">
+            <div class="caption">
+                <h2>{{ quote.quote }}</h2>
+            </div>
+            <div>
+                {{ quote.content }}
+            </div>
+        </div>
+    </div>
+
+    <!-- comments-->
+    Комментарии: <br>
+    {% for comment in comments %}
+        <div style="border: 1px; color: black">
+            <div>
+                {{ comment.comment }}
+            </div>
+            <div style="font-size: 15px">
+                Автор: {{ comment.author.login }}
+            </div>
+            <h12 style="font-size: 15px">
+                Дата публикации: {{ comment.creates_at | date('Y-m-d H:i:s') }}
+            </h12>
+        </div>
+        <hr>
+    {% endfor %}
+
+    {% if user %}
+        <form action="/comment/add" method="post">
+            <input type="hidden" name="moduleName" value="quotes">
+            <input type="hidden" name="controller" value="quote">
+            Добавить комментарий <br>
+            <textarea name="comment" cols="20" rows="1"></textarea>
+            <br>
+            <button type="submit" name="recordId" value="{{ quote.id }}">
+                отправить
+            </button>
+        </form>
+    {% else %}
+        Комментарии могут оставлять только авторизованные пользователи.
+    {% endif %}
+{%  endblock %}

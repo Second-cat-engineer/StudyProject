@@ -1,0 +1,34 @@
+{% extends '/App/templates/main.html' %}
+
+{% block content %}
+<div class="row" style="padding-top: 10px; text-align: center">
+    {% for article in articles %}
+    <div class="col-sm-12 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <a href="/article/one/?id={{ article.id }}">
+                    <h2>{{ article.title }}</h2>
+                </a>
+            </div>
+            <div>
+                {{ article.content|slice(0, 30) }}
+            </div>
+            <div style="font-size: 15px">
+                {% if article.author %}
+                Автор статьи: {{ article.author.login }}
+                {% endif %}
+            </div>
+            <div style="font-size: 15px">
+                Рубрика статьи:
+                <a href="/article/findByHeading/?heading_id={{ article.heading_id }}">
+                    {{ article.heading.heading }}
+                </a>
+            </div>
+            <div style="font-size: 15px">
+                Дата публикации: {{ article.created_at|date(fromat, timezon) }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{%  endblock %}
