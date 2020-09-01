@@ -65,7 +65,6 @@ abstract class Model
         $sql = 'INSERT INTO ' . static::TABLE . ' 
         (' . implode(', ', $columns) . ') 
         VALUES (' . implode(', ', $binds) . ' )';
-        var_dump($sql);
 
         $db = Db::instance();
         $res = $db->execute($sql, $data);
