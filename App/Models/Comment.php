@@ -62,20 +62,18 @@ class Comment extends Model
     public function saveComment()
     {
         $props = [];
-        $props['comment'] = $this->comment;
-        $props['author_id'] = $this->author_id;
-        $props['record_id'] = $this->record_id;
-        $props['module'] = $this->module;
+        $props[':comment'] = $this->comment;
+        $props[':author_id'] = $this->author_id;
+        $props[':record_id'] = $this->record_id;
+        $props[':module'] = $this->module;
 
-        $sql = 'INSERT INTO ' . static::TABLE .
-            ' (comment, record_id, author_id, module_id) 
-            VALUES (\'' . $props['comment'] . '\' , \'' . $props['record_id'] . '\' , 
-            \'' . $props['author_id'] . '\' , 
-            (SELECT id FROM modules WHERE module=\'' . $props['module'] . '\') )';
+        $sql = 'INSERT INTO ' . static::TABLE . ' (comment, record_id, author_id, module_id) 
+            VALUES (:comment, :record_id, :author_id, (SELECT id FROM modules WHERE module=:module))';
 
         $db = Db::instance();
-        $res = $db->execute($sql, []);
+        $res = $db->execute($sql, $props);
         $this->id = $db->lastId();
         return $res;
+
     }
 }
