@@ -9,7 +9,7 @@ use App\Models\Model;
  * class User
  * @property $id
  * @property $login
- * @property $passwordHash
+ * @property $password_hash
  * @property $access
  */
 class User extends Model

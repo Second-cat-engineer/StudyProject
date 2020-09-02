@@ -95,7 +95,7 @@ class Auth
 
         $user = new User();
         $user->login = $login;
-        $user->passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $user->password_hash = password_hash($password, PASSWORD_DEFAULT);
         $user->access = self::DEFAULT_USER_ACCESS;
         $user->save();
 
