@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/App/autoload.php';
+require __DIR__ . '/../App/autoload.php';
 
 use App\Exceptions\DbException;
 use App\Exceptions\Error404;
