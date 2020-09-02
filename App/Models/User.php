@@ -17,7 +17,7 @@ class User extends Model
     protected const TABLE = 'users';
     public string $login;
     public string $access;
-    public string $passwordHash;
+    public string $password_hash;
 
     public static function findByLogin($login)
     {
