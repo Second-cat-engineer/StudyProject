@@ -2,7 +2,6 @@
 session_start();
 require __DIR__ . '/../App/autoload.php';
 
-use App\Exceptions\DbException;
 use App\Exceptions\Error404;
 use \App\Components\Logger;
 
@@ -20,7 +19,6 @@ if ('Admin' === $moduleName) {
 } else {
     $ctrlName = '\App\Modules\\' . $moduleName . '\Controllers\Index\\' . $controllerName;
 }
-var_dump($ctrlName);
 
 try {
     if (!class_exists($ctrlName)) {
@@ -28,10 +26,10 @@ try {
     }
     $ctrl = new $ctrlName();
     $ctrl();
-} catch (DbException | Error404 | \Exception $e) {
+} catch (Error404 | Exception $e) {
     $log = new Logger($e);
     $log->saveLog();
 
-    $error = new \App\Controllers\Error($e);
+    $error = new \App\Controllers\Error();
     $error();
 }
