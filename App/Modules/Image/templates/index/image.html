@@ -7,7 +7,7 @@
                 <h2>{{ image.title }}</h2>
             </div>
             <div>
-                <img src="/src/images/{{ image.path }}" style = "width: 100%">
+                <img src="/src/images/{{ image.path }}" alt="{{ image.title }}" style = "width: 100%">
             </div>
             <div>
                 {{ image.content }}
@@ -24,7 +24,6 @@
     </div>
 
     <!-- AllOfRecord -->
-    Комментарии: <br>
     {% for comment in comments %}
         <div style="border: 1px; color: black">
             <div>
@@ -33,9 +32,9 @@
             <div style="font-size: 15px">
                 Автор: {{ comment.author.login }}
             </div>
-            <h12 style="font-size: 15px">
+            <div style="font-size: 15px">
                 Дата публикации: {{ comment.creates_at | date('Y-m-d H:i:s') }}
-            </h12>
+            </div>
         </div>
         <hr>
     {% endfor %}
