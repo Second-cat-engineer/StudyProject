@@ -1,7 +1,0 @@
-.git/
-.gitignore
-.idea
-vendor/
-src/
-sql
-logs
