@@ -39,7 +39,7 @@ class Auth
         if (!$this->existUser($login)) {
             return false;
         }
-        $hashPassword = $this->existUser($login)->passwordHash;
+        $hashPassword = $this->existUser($login)->password_hash;
         return password_verify($password, $hashPassword);
     }
 
