@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Components\Db;
 use App\Exceptions\MultiException;
+use App\Exceptions\Validation;
 
 abstract class Model
 {
@@ -122,7 +123,7 @@ abstract class Model
             }
             try {
                 $this->validator($prop, $value);
-            } catch (\App\Exceptions\Validation $e) {
+            } catch (Validation $e) {
                 $errors->add($e);
             }
         }
