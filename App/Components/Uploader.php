@@ -15,11 +15,11 @@ class Uploader
 
     public function __construct($data)
     {
-        $this->error = $_FILES['image']['error'];
-        $this->nameImage = $_FILES['image']['name'];
-        $this->extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-        $this->size = $_FILES['image']['size'];
-        $this->tmpName = $_FILES['image']['tmp_name'];
+        $this->error = $data['image']['error'];
+        $this->nameImage = $data['image']['name'];
+        $this->extension = pathinfo($data['image']['name'], PATHINFO_EXTENSION);
+        $this->size = $data['image']['size'];
+        $this->tmpName = $data['image']['tmp_name'];
     }
 
     protected function isUpload()
