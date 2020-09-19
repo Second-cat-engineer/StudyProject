@@ -3,7 +3,7 @@ session_start();
 require __DIR__ . '/../App/autoload.php';
 
 use App\Exceptions\Error404;
-use \App\Components\Logger;
+use App\Components\Logger;
 
 $uri = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $uri);
