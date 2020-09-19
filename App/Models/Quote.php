@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Components\Validator;
-use App\Exceptions\Validation;
 
 /**
  * Class Quote
@@ -24,7 +23,6 @@ class Quote extends Model
         switch ($name) {
             case 'author':
                 return User::findById($this->author_id);
-                break;
             default:
                 return null;
         }
@@ -35,7 +33,6 @@ class Quote extends Model
         switch ($name) {
             case 'author':
                 return !empty($this->author_id);
-                break;
             default:
                 return null;
         }

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Components\Db;
 use App\Components\Validator;
-use App\Exceptions\Validation;
 
 /**
  * Class Comment
@@ -28,7 +27,6 @@ class Comment extends Model
         switch ($name) {
             case 'author':
                 return User::findById($this->author_id);
-                break;
             default:
                 return null;
         }
@@ -39,7 +37,6 @@ class Comment extends Model
         switch ($name) {
             case 'author':
                 return !empty($this->author_id);
-                break;
             default:
                 return null;
         }
@@ -74,6 +71,5 @@ class Comment extends Model
         $res = $db->execute($sql, $props);
         $this->id = $db->lastId();
         return $res;
-
     }
 }

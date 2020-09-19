@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Components\Db;
 use App\Components\Validator;
-use App\Exceptions\Validation;
 
 /**
  * Class Article
@@ -26,10 +25,8 @@ class Article extends Model
         switch ($name) {
             case 'author':
                 return User::findById($this->author_id);
-                break;
             case 'heading':
                 return Heading::findById($this->heading_id);
-                break;
             default:
                 return null;
         }
@@ -40,10 +37,8 @@ class Article extends Model
         switch ($name) {
             case 'author':
                 return !empty($this->author_id);
-                break;
             case 'heading':
                 return !empty($this->heading_id);
-                break;
             default:
                 return null;
         }

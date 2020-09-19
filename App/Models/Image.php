@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use App\Components\Validator;
-use App\Exceptions\Validation;
-use App\Models\User;
 
 /**
  * Class Image
@@ -28,7 +26,6 @@ class Image extends Model
         switch ($name) {
             case 'author':
                 return User::findById($this->author_id);
-                break;
             default:
                 return null;
         }
@@ -39,7 +36,6 @@ class Image extends Model
         switch ($name) {
             case 'author':
                 return !empty($this->author_id);
-                break;
             default:
                 return null;
         }
