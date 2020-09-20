@@ -10,10 +10,10 @@
     <h1> Страница регистрации </h1>
     <form action = "/user/registration" method = "post">
         <p> введите Логин:
-            <input type = "text" name = "login" value="{{ login }}">
+            <input type = "text" name = "login" value="{{ login }}" placeholder="Login" required>
         </p>
         <p> введите Пароль:
-            <input type = "password" name = "password" value="{{ password }}">
+            <input type = "password" name = "password" value="{{ password }}" placeholder="Password" required>
         </p>
         <p>
             <button type="submit"> Зарегистрироваться </button>
