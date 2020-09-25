@@ -32,7 +32,7 @@
                 Автор: {{ comment.author.login }}
             </div>
             <div style="font-size: 15px">
-                Дата публикации: {{ comment.creates_at | date('Y-m-d H:i:s') }}
+                Дата публикации: {{ comment.created_at | date(fromat, timezon) }}
             </div>
         </div>
         <hr>
